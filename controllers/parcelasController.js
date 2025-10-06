@@ -28,7 +28,7 @@ const obtenerParcelasVigentes = async (req, res) => {
         estado: parcela.estado,
         coords: coordsMatch ? 
           { lat: parseFloat(coordsMatch[1]), lon: parseFloat(coordsMatch[2]) } 
-          : { lat: 19.4326, lon: -99.1332 } // CDMX por defecto
+          : { lat: 19.4326, lon: -99.1332 } // CDMX
       };
     });
 
