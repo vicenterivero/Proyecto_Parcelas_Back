@@ -1,0 +1,5 @@
+[2025-10-05 22:54:54] ERROR: Error en registro: data and salt arguments required
+[2025-10-05 22:56:56] ERROR: Error en registro: data and salt arguments required
+[2025-10-05 22:59:11] ERROR: Error en registro: data and salt arguments required
+[2025-10-05 23:02:06] ERROR: Error en registro: llave duplicada viola restricción de unicidad «usuarios_correo_key»
+[2025-10-05 23:03:01] ERROR: Error en registro: llave duplicada viola restricción de unicidad «usuarios_correo_key»
