@@ -3,3 +3,33 @@
 [2025-10-05 22:59:11] ERROR: Error en registro: data and salt arguments required
 [2025-10-05 23:02:06] ERROR: Error en registro: llave duplicada viola restricción de unicidad «usuarios_correo_key»
 [2025-10-05 23:03:01] ERROR: Error en registro: llave duplicada viola restricción de unicidad «usuarios_correo_key»
+[2025-10-06 17:34:22] ERROR: Error al obtener datos de sensores: fetch is not a function
+[2025-10-06 17:34:22] ERROR: Worker falló: fetch is not a function
+[2025-10-06 17:34:27] ERROR: Error al obtener datos de sensores: fetch is not a function
+[2025-10-06 17:34:27] ERROR: Worker falló: fetch is not a function
+[2025-10-06 17:34:32] ERROR: Error al obtener datos de sensores: fetch is not a function
+[2025-10-06 17:34:32] ERROR: Worker falló: fetch is not a function
+[2025-10-06 17:34:37] ERROR: Error al obtener datos de sensores: fetch is not a function
+[2025-10-06 17:34:37] ERROR: Worker falló: fetch is not a function
+[2025-10-06 17:34:42] ERROR: Error al obtener datos de sensores: fetch is not a function
+[2025-10-06 17:34:42] ERROR: Worker falló: fetch is not a function
+[2025-10-06 17:34:47] ERROR: Error al obtener datos de sensores: fetch is not a function
+[2025-10-06 17:34:47] ERROR: Worker falló: fetch is not a function
+[2025-10-06 17:34:52] ERROR: Error al obtener datos de sensores: fetch is not a function
+[2025-10-06 17:34:52] ERROR: Worker falló: fetch is not a function
+[2025-10-06 17:34:57] ERROR: Error al obtener datos de sensores: fetch is not a function
+[2025-10-06 17:34:57] ERROR: Worker falló: fetch is not a function
+[2025-10-06 17:42:15] ERROR: Worker falló: sensores.forEach is not a function
+[2025-10-06 17:42:19] ERROR: Worker falló: sensores.forEach is not a function
+[2025-10-06 17:42:24] ERROR: Worker falló: sensores.forEach is not a function
+[2025-10-06 17:42:29] ERROR: Worker falló: sensores.forEach is not a function
+[2025-10-06 17:42:34] ERROR: Worker falló: sensores.forEach is not a function
+[2025-10-06 17:51:38] ERROR: Worker falló: getDataParcelas is not a function
+[2025-10-06 17:51:43] ERROR: Worker falló: getDataParcelas is not a function
+[2025-10-06 17:53:06] ERROR: Worker falló: logger is not defined
+[2025-10-06 17:53:11] ERROR: Worker falló: logger is not defined
+[2025-10-06 17:53:16] ERROR: Worker falló: logger is not defined
+[2025-10-06 17:54:26] ERROR: Worker falló: processSensores is not a function
+[2025-10-06 17:54:31] ERROR: Worker falló: processSensores is not a function
+[2025-10-06 18:26:28] ERROR: Error en registro: data and salt arguments required
+[2025-10-06 18:28:26] ERROR: Error en registro: llave duplicada viola restricción de unicidad «usuarios_correo_key»

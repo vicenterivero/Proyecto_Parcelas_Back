@@ -2,22 +2,44 @@ const express = require('express');
 const dotenv = require('dotenv');
 const promBundle = require('express-prom-bundle');
 const logger = require('./utils/logger');
-const authRoutes = require('./routes/auth_routes');
+
+const sensoresRoutes = require('./routes/sensores_routes');
+const authRoutes = require('./routes/auth_routes'); // ✅ Agregado
 
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middleware
+// Middleware de métricas
+const metricsMiddleware = promBundle({
+  includeMethod: true,
+  includePath: true,
+  includeStatusCode: true,
+  includeUp: true,
+  metricsPath: '/metrics',
+  promClient: { collectDefaultMetrics: {} }
+});
+
+app.use(metricsMiddleware);
 app.use(express.json());
-app.use(promBundle({ includeMethod: true, includePath: true, includeStatusCode: true, includeUp: true }));
 
 // Rutas
-app.use('/auth', authRoutes);
+app.use('/api/sensors', sensoresRoutes);
+app.use('/auth', authRoutes); // ✅ Montando auth
 
 app.get('/', (req, res) => {
-  res.send(' Microservicio A - Autenticación funcionando');
+  res.send('Microservicio de Sensores funcionando correctamente');
 });
+
+// Worker periódico cada 5 segundos para obtener datos
+const { getDataParcelas } = require('./services/sensores');
+setInterval(async () => {
+  try {
+    await getDataParcelas();
+  } catch (error) {
+    logger.error(`Worker falló: ${error.message}`);
+  }
+}, 5000);
 
 // Iniciar servidor
 app.listen(port, () => {
