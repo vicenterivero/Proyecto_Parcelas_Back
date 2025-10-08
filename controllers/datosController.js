@@ -11,11 +11,13 @@ const obtenerDatosActuales = async (req, res) => {
     
     for (const tipo of tiposSensor) {
       const ultimoDato = await mongoDb.collection('sensores_data')
-        .find({ tipo_sensor: tipo })
+        .find({ 
+          tipo_sensor: tipo,
+          valor: { $exists: true }
+        })
         .sort({ timestamp: -1 })
         .limit(1)
         .toArray();
-      
       datosActuales[tipo] = ultimoDato[0] || null;
     }
     
@@ -27,7 +29,11 @@ const obtenerDatosActuales = async (req, res) => {
     
   } catch (error) {
     logger.error(`❌ Error obteniendo datos actuales: ${error.message}`);
-    res.status(500).json({ error: 'Error obteniendo datos actuales' });
+    res.status(500).json({ 
+      success: false,
+      error: 'Error obteniendo datos actuales',
+      details: error.message 
+    });
   }
 };
 
