@@ -4,7 +4,7 @@ const promBundle = require('express-prom-bundle');
 const logger = require('./utils/logger');
 
 const sensoresRoutes = require('./routes/sensores_routes');
-const authRoutes = require('./routes/auth_routes'); // ✅ Agregado
+const cors = require('cors');
 const authRoutes = require('./routes/auth_routes');
 const { connectMongoDB } = require('./config/database');
 const parcelasRoutes = require('./routes/parcelasRoutes');
@@ -30,10 +30,17 @@ const metricsMiddleware = promBundle({
 app.use(metricsMiddleware);
 app.use(express.json());
 
+// Configurar CORS
+app.use(cors({
+  origin: 'http://localhost:5173',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true
+}));
+
 // Rutas
 app.use('/api/sensors', sensoresRoutes);
-app.use('/auth', authRoutes); // ✅ Montando auth
 
+app.use('/auth', authRoutes);
 app.get('/', (req, res) => {
   res.send('Microservicio de Sensores funcionando correctamente');
 });
@@ -55,4 +62,3 @@ app.use('/api', datosRoutes);
 app.listen(port, () => {
   logger.info(`Servidor corriendo en http://localhost:${port}`);
 });
-
