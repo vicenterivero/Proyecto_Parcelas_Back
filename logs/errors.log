@@ -3,3 +3,6 @@
 [2025-10-05 22:59:11] ERROR: Error en registro: data and salt arguments required
 [2025-10-05 23:02:06] ERROR: Error en registro: llave duplicada viola restricción de unicidad «usuarios_correo_key»
 [2025-10-05 23:03:01] ERROR: Error en registro: llave duplicada viola restricción de unicidad «usuarios_correo_key»
+[2025-10-13 11:05:45] ERROR: Error en login: Cannot destructure property 'correo' of 'req.body' as it is undefined.
+[2025-10-13 11:07:08] ERROR: Error en login: Cannot destructure property 'correo' of 'req.body' as it is undefined.
+[2025-10-13 11:07:30] ERROR: Error en login: Cannot destructure property 'correo' of 'req.body' as it is undefined.

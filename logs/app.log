@@ -6,3 +6,47 @@
 [2025-10-05 23:02:06] ERROR: Error en registro: llave duplicada viola restricción de unicidad «usuarios_correo_key»
 [2025-10-05 23:03:01] ERROR: Error en registro: llave duplicada viola restricción de unicidad «usuarios_correo_key»
 [2025-10-05 23:03:27] INFO: Usuario registrado: jose@example.com
+[2025-10-08 16:20:38] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-08 16:21:05] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-08 18:35:29] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-08 18:35:41] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-12 21:31:02] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-12 21:33:37] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-12 21:56:17] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-12 22:28:00] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-12 22:33:33] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-12 22:33:58] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-12 22:34:21] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-12 22:37:54] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-12 22:52:41] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-12 22:53:03] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-12 22:53:53] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-12 22:54:37] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-12 22:57:52] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-12 23:03:42] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-12 23:04:03] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-12 23:05:06] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-12 23:06:19] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-12 23:08:02] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-12 23:08:25] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-13 09:49:05] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-13 09:51:33] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-13 09:53:18] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-13 09:55:58] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-13 09:57:18] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-13 10:32:08] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-13 10:37:04] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-13 11:01:16] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-13 11:01:31] WARN: Contraseña incorrecta: admin@sistema.com
+[2025-10-13 11:01:45] WARN: Contraseña incorrecta: admin@sistema.com
+[2025-10-13 11:02:26] WARN: Contraseña incorrecta: admin@sistema.com
+[2025-10-13 11:02:33] WARN: Contraseña incorrecta: admin@sistema.com
+[2025-10-13 11:05:45] ERROR: Error en login: Cannot destructure property 'correo' of 'req.body' as it is undefined.
+[2025-10-13 11:07:08] ERROR: Error en login: Cannot destructure property 'correo' of 'req.body' as it is undefined.
+[2025-10-13 11:07:30] ERROR: Error en login: Cannot destructure property 'correo' of 'req.body' as it is undefined.
+[2025-10-13 11:15:10] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-13 11:16:22] INFO: Usuario logueado: admin@gmail.com
+[2025-10-13 11:24:52] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-13 11:49:56] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-13 15:59:01] INFO: Servidor corriendo en http://localhost:3000
+[2025-10-13 16:23:49] INFO: Servidor corriendo en http://localhost:3000
