@@ -45,7 +45,6 @@ const obtenerDatosHistoricos = async (req, res) => {
     const fechaInicio = new Date(Date.now() - (horas * 60 * 60 * 1000));
     
     const filtro = { 
-      timestamp: { $gte: fechaInicio } 
     };
     if (tipo) filtro.tipo_sensor = tipo;
     

@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  backend:
+    container_name: proyecto_parcelas_back
+    build: .
+    restart: always
+    ports:
+      - "5001:5001"
+    environment:
+      - NODE_ENV=production
+      - PORT=5001
+    volumes:
+      - .:/app
+    command: ["node", "app.js"]

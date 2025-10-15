@@ -15,7 +15,6 @@ const obtenerParcelasVigentes = async (req, res) => {
     `;
     
     const result = await pgPool.query(query);
-    
     // Extraer coordenadas de ubicación
     const parcelasFormateadas = result.rows.map(parcela => {
       const coordsMatch = parcela.ubicacion.match(/Lat:\s*([\d.-]+),\s*Lon:\s*([\d.-]+)/);

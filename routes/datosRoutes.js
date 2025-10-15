@@ -3,7 +3,7 @@ const router = express.Router();
 const { obtenerDatosActuales, obtenerDatosHistoricos } = require('../controllers/datosController');
 const { authenticateToken } = require('../middleware/auth');
 
-router.get('/sensores/actual', authenticateToken, obtenerDatosActuales);
-router.get('/sensores/historico', authenticateToken, obtenerDatosHistoricos);
+router.get('/sensores/actual', obtenerDatosActuales);
+router.get('/sensores/historico', obtenerDatosHistoricos);
 
 module.exports = router;
