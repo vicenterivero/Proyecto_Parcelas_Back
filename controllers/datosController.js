@@ -45,12 +45,14 @@ const obtenerDatosHistoricos = async (req, res) => {
     const fechaInicio = new Date(Date.now() - (horas * 60 * 60 * 1000));
 
     const filtro = {
+          timestamp: { $gte: fechaInicio } 
     };
     if (tipo) filtro.tipo_sensor = tipo;
 
     const datos = await mongoDb.collection('sensores_data')
       .find(filtro)
       .sort({ timestamp: 1 })
+      .limit(100)
       .toArray();
 
     res.json({
