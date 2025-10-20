@@ -8,6 +8,11 @@ const connectMongoDB = async () => {
     const client = new MongoClient(process.env.MONGO_URI);
     await client.connect();
     mongoDb = client.db(process.env.MONGO_DB_NAME);
+    await mongoDb.collection('sensores_data').createIndex(
+    { tipo_sensor: 1, valor: 1, timestamp: 1 },
+    { unique: true }
+    );
+
     console.log('✅ Conectado a MongoDB');
     return mongoDb;
   } catch (error) {
