@@ -10,51 +10,58 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
-    env:
-      DOCKER_IMAGE_NAME: proyecto_parcelas_back
-      DOCKER_REGISTRY: docker.io
-      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 20
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
 
-    - name: Install dependencies
-      run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-    - name: Run tests
-      run: npm test || echo "No tests defined"
+      - name: Run tests
+        run: npm test || echo "No tests defined"
 
-    - name: Log in to Docker Hub
-      uses: docker/login-action@v2
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+      # ✅ Login correcto a Docker Hub usando secrets explícitos
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build Docker image
-      run: docker build -t $DOCKER_IMAGE_NAME:latest .
+      - name: Build Docker image
+        run: docker build -t proyecto_parcelas_back:latest .
 
-    - name: Push Docker image
-      run: |
-        docker tag $DOCKER_IMAGE_NAME:latest $DOCKER_REGISTRY/$DOCKER_USERNAME/$DOCKER_IMAGE_NAME:latest
-        docker push $DOCKER_REGISTRY/$DOCKER_USERNAME/$DOCKER_IMAGE_NAME:latest
+      - name: Push Docker image
+        run: |
+          docker tag proyecto_parcelas_back:latest docker.io/${{ secrets.DOCKER_USERNAME }}/proyecto_parcelas_back:latest
+          docker push docker.io/${{ secrets.DOCKER_USERNAME }}/proyecto_parcelas_back:latest
 
-    # Opcional: despliegue en un servidor remoto usando SSH
-    - name: Deploy to server
-      if: github.ref == 'refs/heads/main'
-      uses: appleboy/ssh-action@v0.1.6
-      with:
-        host: ${{ secrets.SERVER_HOST }}
-        username: ${{ secrets.SERVER_USER }}
-        key: ${{ secrets.SERVER_SSH_KEY }}
-        script: |
-          docker pull $DOCKER_REGISTRY/$DOCKER_USERNAME/$DOCKER_IMAGE_NAME:latest
-          docker stop proyecto_parcelas_back || true
-          docker rm proyecto_parcelas_back || true
-          docker run -d --name proyecto_parcelas_back -p 5001:5001 $DOCKER_REGISTRY/$DOCKER_USERNAME/$DOCKER_IMAGE_NAME:latest
+      # ✅ Deploy usando secret prod como archivo .env
+      - name: Deploy to server
+        if: github.ref == 'refs/heads/main'
+        uses: appleboy/ssh-action@v0.1.6
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            # Crear archivo .env temporal en el servidor
+            echo "${{ secrets.prod }}" > /tmp/.env
+
+            # Detener contenedor anterior si existe
+            docker stop proyecto_parcelas_back || true
+            docker rm proyecto_parcelas_back || true
+
+            # Pull de la nueva imagen
+            docker pull docker.io/${{ secrets.DOCKER_USERNAME }}/proyecto_parcelas_back:latest
+
+            # Ejecutar contenedor usando el env file
+            docker run -d \
+              --name proyecto_parcelas_back \
+              --env-file /tmp/.env \
+              -p 5001:5001 \
+              docker.io/${{ secrets.DOCKER_USERNAME }}/proyecto_parcelas_back:latest
