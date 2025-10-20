@@ -2,6 +2,55 @@
 const fetch = require('node-fetch');
 const logger = require('../utils/logger');
 const { getMongoDb } = require('../config/database');
+
+
+function generarDatosSensores(cantidad = 1000) {
+  const tiposSensor = ['temperatura', 'humedad', 'lluvia', 'radiacion'];
+  const nuevosDatos = [];
+
+  for (let i = 0; i < cantidad; i++) {
+    const tipo = tiposSensor[Math.floor(Math.random() * tiposSensor.length)];
+
+    // Generar valor según tipo
+    let valor, unidad;
+    switch (tipo) {
+      case 'temperatura':
+        valor = +(Math.random() * 40 - 5).toFixed(2); // -5 a 35 °C
+        unidad = '°C';
+        break;
+      case 'humedad':
+        valor = +(Math.random() * 100).toFixed(2); // 0 a 100 %
+        unidad = '%';
+        break;
+      case 'lluvia':
+        valor = +(Math.random() * 20).toFixed(2); // 0 a 20 mm
+        unidad = 'mm';
+        break;
+      case 'radiacion':
+        valor = +(Math.random() * 1200).toFixed(2); // 0 a 1200 W/m2
+        unidad = 'W/m2';
+        break;
+    }
+
+    // Timestamp aleatorio dentro de los últimos 7 días
+const ahora = Date.now();
+const diasAtras = Math.floor(Math.random() * 7); // 0 a 6 días
+const horasAtras = Math.floor(Math.random() * 24);
+const minutosAtras = Math.floor(Math.random() * 60);
+
+// Restamos la cantidad de tiempo en milisegundos
+const timestamp = new Date(
+  ahora
+  - diasAtras * 24 * 60 * 60 * 1000
+  - horasAtras * 60 * 60 * 1000
+  - minutosAtras * 60 * 1000
+);
+
+nuevosDatos.push({ tipo_sensor: tipo, valor, unidad, timestamp });
+  }
+
+  return nuevosDatos;
+}
 async function getDataParcelas() {
   try {
     const start = Date.now();
@@ -44,7 +93,8 @@ async function getDataParcelas() {
     ).values()
   ];
 
-    await mongoDb.collection('sensores_data').insertMany(unique);
+    // await mongoDb.collection('sensores_data').insertMany(unique);
+    await mongoDb.collection('sensores_data').insertMany(generarDatosSensores());
     if (totalSensores === 0) {
       logger.warn('⚠️ Alerta: No se recibieron datos de sensores');
     }
