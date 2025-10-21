@@ -34,7 +34,15 @@ jobs:
       # 4️⃣ Run tests
       - name: Run tests
         run: npm test || echo "No tests defined"
-
+        
+      - name: Check variables
+        run: |
+          echo "DOCKER_USERNAME: $DOCKER_USERNAME"
+          if [ -z "$DOCKER_PASSWORD" ]; then
+            echo ${{ secrets.DOCKER_PASSWORD }}
+          else
+           echo ${{ secrets.DOCKER_PASSWORD }}
+          fi
       # 5️⃣ Login to Docker Hub
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
