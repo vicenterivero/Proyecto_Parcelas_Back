@@ -83,7 +83,7 @@ jobs:
       - name: Send deployment email
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: smtp.dexabyte.com.mx
+          server_address: smtp.gmail.com
           server_port: 465
           username: ${{ secrets.SMTP_USERNAME }}   # ejemplo: noreplay@dexabyte.com.mx
           password: ${{ secrets.SMTP_PASSWORD }}   # contraseña o app password
