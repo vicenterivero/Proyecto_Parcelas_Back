@@ -78,3 +78,18 @@ jobs:
               -e JWT_SECRET="${{ secrets.JWT_SECRET }}" \
               -e MONGO_URI="${{ secrets.MONGO_URI }}" \
               ${{ secrets.DOCKER_USERNAME }}/proyecto_parcelas_back:latest
+  
+      # 9️⃣ Enviar correo de notificación
+      - name: Send deployment email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.dexabyte.com.mx
+          server_port: 465
+          username: ${{ secrets.SMTP_USERNAME }}   # ejemplo: noreplay@dexabyte.com.mx
+          password: ${{ secrets.SMTP_PASSWORD }}   # contraseña o app password
+          subject: "✅ Despliegue completado: Backend Proyecto Parcelas"
+          body: "El CI/CD se ejecutó correctamente en la rama main y el backend se desplegó en el servidor."
+          to: "vicente.2015.varb@gmail.com"
+          from: "noreply@dexabyte.com.mx"
+          secure: true
+
