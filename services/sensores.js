@@ -4,7 +4,7 @@ const logger = require('../utils/logger');
 const { getMongoDb } = require('../config/database');
 
 
-function generarDatosSensores(cantidad = 1000) {
+function generarDatosSensores(cantidad = 2000) {
   const tiposSensor = ['temperatura', 'humedad', 'lluvia', 'radiacion'];
   const nuevosDatos = [];
 
