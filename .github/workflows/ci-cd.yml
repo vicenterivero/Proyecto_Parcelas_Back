@@ -68,7 +68,7 @@ jobs:
             docker rm proyecto_parcelas_back || true
             docker run -d \
               --name proyecto_parcelas_back \
-              -p 5001:5001 \
+              -p 5001:3000 \
               -e PORT=${{ secrets.PORT }} \
               -e DB_HOST=${{ secrets.DB_HOST }} \
               -e DB_USER=${{ secrets.DB_USER }} \
